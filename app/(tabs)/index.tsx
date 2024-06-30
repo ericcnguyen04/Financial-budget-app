@@ -7,7 +7,9 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Number Pad</Text>
+
+      <Text style={styles.title}>numver</Text>
+
       <View style={styles.numberPad}>
         {Array.from({ length: 9 }, (_, i) => (
           <TouchableOpacity key={i + 1} style={styles.button} onPress={() => handlePress(i + 1)}>
@@ -21,7 +23,7 @@ export default function HomeScreen() {
           <Text style={styles.buttonText}>0</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => handlePress('submit')}>
-          <Text style={styles.buttonText}>Submit</Text>
+          <Text style={styles.buttonText}>X</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -38,6 +40,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     marginBottom: 20,
+    marginVertical: 10,
+    width: '80%',
+    padding: 20,
+    backgroundColor: '#ddd',
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
   },
   numberPad: {
     width: '80%',
