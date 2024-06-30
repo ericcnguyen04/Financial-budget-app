@@ -1,5 +1,5 @@
-import { Image, StyleSheet, Platform, Text, View, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import { Image, StyleSheet, Platform, Text, View, TouchableOpacity, Animated, PanResponder } from 'react-native';
+import React, { useState, useRef } from 'react';
 
 export default function HomeScreen() {
   const handlePress = (num) => {
@@ -13,10 +13,29 @@ export default function HomeScreen() {
 
   const [value, setValue] = useState('')
 
+  const pan = useRef(new Animated.ValueXY()).current;
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderMove: Animated.event(
+        [null, { dx: pan.x, dy: pan.y }],
+        { useNativeDriver: false }
+      ),
+      onPanResponderRelease: () => {
+        Animated.spring(pan, { toValue: { x: 0, y: 0 }, useNativeDriver: false }).start();
+      },
+    })
+  ).current;
+
   return (
     <View style={styles.container}>
-
+      {/* <Animated.View
+        {...panResponder.panHandlers}
+        style={[pan.getLayout(), styles.swipeableTitle]}
+      > */}
       <Text style={styles.title}>{value ? value : 'Insert Value'}</Text>
+      {/* </Animated.View> */}
 
       <View style={styles.numberPad}>
         {Array.from({ length: 9 }, (_, i) => (
