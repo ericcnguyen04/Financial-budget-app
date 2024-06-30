@@ -2,16 +2,21 @@ import { Image, StyleSheet, Platform, Text, View, TouchableOpacity } from 'react
 import React, { useState } from 'react';
 
 export default function HomeScreen() {
-  const handlePress = (number) => {
-    console.log(number);
+  const handlePress = (num) => {
+    setValue(prevValue => prevValue + num.toString());
+    console.log(num);
   };
 
-  const [value, setValue] = useState(0)
+  const handleBackspace = () => {
+    
+  }
+
+  const [value, setValue] = useState('')
 
   return (
     <View style={styles.container}>
 
-      <Text style={styles.title}>value</Text>
+      <Text style={styles.title}>{value ? value : 'Insert Value'}</Text>
 
       <View style={styles.numberPad}>
         {Array.from({ length: 9 }, (_, i) => (
