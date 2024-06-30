@@ -1,14 +1,17 @@
 import { Image, StyleSheet, Platform, Text, View, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
 
 export default function HomeScreen() {
   const handlePress = (number) => {
     console.log(number);
   };
 
+  const [value, setValue] = useState(0)
+
   return (
     <View style={styles.container}>
 
-      <Text style={styles.title}>numver</Text>
+      <Text style={styles.title}>value</Text>
 
       <View style={styles.numberPad}>
         {Array.from({ length: 9 }, (_, i) => (
