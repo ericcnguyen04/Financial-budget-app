@@ -8,7 +8,7 @@ export default function HomeScreen() {
   };
 
   const handleBackspace = () => {
-    
+    setValue(prevValue => prevValue.slice(0, -1));
   }
 
   const [value, setValue] = useState('')
@@ -30,7 +30,7 @@ export default function HomeScreen() {
         <TouchableOpacity style={styles.button} onPress={() => handlePress(0)}>
           <Text style={styles.buttonText}>0</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => handlePress('submit')}>
+        <TouchableOpacity style={styles.button} onPress={() => handleBackspace()}>
           <Text style={styles.buttonText}>X</Text>
         </TouchableOpacity>
       </View>
